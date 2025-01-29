@@ -11,7 +11,7 @@ export default function Contact() {
         </p>
       </div>
       <div className="flex w-full items-center justify-center py-5">
-        <p className="text-xl">Email us at : <a className="text-blue-500" href="mailto:consult@inclusiveinsights.com">consult@inclusiveinsights.com</a></p>
+        <p className="sc-834:text-xl text-l">Email us at : <a className="text-blue-500" href="mailto:consult@inclusiveinsights.com">consult@inclusiveinsights.com</a></p>
       </div>
     </div>
   );
