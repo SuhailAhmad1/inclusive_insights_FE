@@ -8,6 +8,7 @@ export default function Consult() {
     <>
       <Hero />
       <Expertise />
+      <Process />
       <Contact />
     </>
   );
