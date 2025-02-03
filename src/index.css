@@ -50,3 +50,7 @@
   padding: 4px;
   margin-bottom: 1rem;
 }
+
+.input_error{
+  border: 1px solid red
+}
