@@ -1,5 +1,13 @@
+import Hero from "./Hero";
+import HowTo from "./HowTo";
+import SubmitForm from "./SubmitSection";
+
 export default function Submission() {
   return (
-    <div>Submission</div>
-  )
+    <>
+      <Hero />
+      <HowTo />
+      <SubmitForm />
+    </>
+  );
 }
