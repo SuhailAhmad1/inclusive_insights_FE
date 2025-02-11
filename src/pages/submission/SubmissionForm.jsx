@@ -107,7 +107,7 @@ export default function SubmissionForm() {
         ...prev,
         main_docx: true,
       }));
-      setInputErrorMessage("Invalid document")
+      setInputErrorMessage("Invalid document - Only docx is suported")
       return;
     }
 
@@ -123,7 +123,7 @@ export default function SubmissionForm() {
         ...prev,
         supporting_image: true,
       }));
-      setInputErrorMessage("Invalid image")
+      setInputErrorMessage("Invalid image - Only jpg, jpeg and png are supported")
       return;
     }
 
