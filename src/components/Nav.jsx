@@ -32,7 +32,7 @@ export default function Nav() {
             className="font-poppins font-normal 
             cursor-pointer sc-950:mr-5 mr-3"
           >
-            <a href="/publications">Our Publications</a>
+            <Link to="/publications">Our Publications</Link>
           </li>
           <li
             className="font-poppins font-normal 
@@ -51,7 +51,7 @@ export default function Nav() {
             cursor-pointer sc-950:pl-10 pl-3"
           >
             <button className="border-2 border-gray-400 border-solid px-4 py-2 rounded-xl">
-              <a href="">Contact Us</a>
+              <a href="/contact">Contact Us</a>
             </button>
           </li>
         </ul>
@@ -88,7 +88,7 @@ export default function Nav() {
                 className="font-poppins font-normal 
                 cursor-pointer mb-5"
               >
-                <a href="/publications">Our Publications</a>
+                <Link to="/publications">Our Publications</Link>
               </li>
               <li
                 className="font-poppins font-normal 
@@ -107,7 +107,7 @@ export default function Nav() {
                 cursor-pointer my-5"
               >
                 <button className="border-2 border-gray-400 border-solid px-4 py-2 rounded-xl">
-                  <a href="">Contact Us</a>
+                  <a href="/contact">Contact Us</a>
                 </button>
               </li>
             </ul>

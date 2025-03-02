@@ -4,6 +4,7 @@ import RootLayout from "./components/RootLayout";
 import ErrorPage from "./pages/error/ErrorPage";
 import Consult from "./pages/consult/Consult";
 import Submission from "./pages/submission/Submission";
+import Publications from "./pages/publications/Publications";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: "/submission",
         element: <Submission />,
       },
+      {
+        path: "/publications",
+        element: <Publications />
+      }
     ],
   },
 ]);

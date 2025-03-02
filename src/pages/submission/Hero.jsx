@@ -9,7 +9,7 @@ export default function Hero() {
         </h2>
       </div>
       <div className="w-full flex justify-center items-center pb-20">
-        <p className="text-center sc-1218:text-3xl sc-950:text-2xl w-[90%]">
+      <p className="text-center sc-1218:text-3xl sc-950:text-2xl text-xl w-[90%]">
           Thank you for your interest in contributing to our platform! We
           welcome submissions that align with our mission to champion disability
           rights, accessibility, and inclusion. Please read the following
