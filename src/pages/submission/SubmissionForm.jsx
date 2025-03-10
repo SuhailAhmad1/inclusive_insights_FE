@@ -30,7 +30,8 @@ export default function SubmissionForm() {
   const [inputErrorMessage, setInputErrorMessage] = useState("");
 
   function handleInputChange(e) {
-    e.preventDefault()
+    e.preventDefault();
+    e.stopPropagation();
     const { name, value, type, files } = e.target;
     setUserData((prev) => ({
       ...prev,
@@ -177,8 +178,7 @@ export default function SubmissionForm() {
         supporting_image: null,
         author_bio: "",
       });
-      document.getElementById("supporting_image").value = "";
-      document.getElementById("main_docx").value = "";
+      document.querySelectorAll('input[type="file"]').forEach(input => input.value = "");
     } catch (error) {
       toast.error("Failed to submit publication.");
     }
