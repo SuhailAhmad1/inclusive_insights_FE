@@ -3,12 +3,12 @@ import SubmissionForm from "./SubmissionForm";
 export default function SubmitSection() {
   return (
     <div className="w-full flex sc-1218:flex-row flex-col mt-10">
-      <div className="p-20 bg-black text-white sc-1218:w-1/2 w-full border-b-2  border-gray-400">
+      <div className="py-20 sc-950:px-20 px-5 bg-black text-white sc-1218:w-1/2 w-full border-b-2  border-gray-400">
         <div className="w-full">
           <p className="sc-950:text-3xl text-2xl font-bold">
             Submission Format:
           </p>
-          <ol className="sc-834:pl-20 sc-650:pl-10 pl-5 py-10 list-decimal">
+          <ol className="sc-834:pl-20 sc-650:pl-10 pl-8 pb-10 pt-3 list-decimal">
             <li>
               Length: opinion pieces should be between 800-1000 words, personal
               stories should be between 1500-2000 words, case study should be
@@ -35,7 +35,7 @@ export default function SubmitSection() {
           <p className="sc-950:text-3xl text-2xl font-bold">
             We accept submissions on topics related to:
           </p>
-          <ul className="sc-834:pl-20 sc-650:pl-10 pl-5 pt-10 list-disc">
+          <ul className="sc-834:pl-20 sc-650:pl-10 pl-8 pt-3 list-disc">
             <li>Disability rights and advocacy.</li>
             <li>Accessibility in physical and digital spaces.</li>
             <li>Inclusive practices in workplaces and communities.</li>
@@ -45,7 +45,7 @@ export default function SubmitSection() {
           </ul>
         </div>
       </div>
-      <div className="border-solid border-2 border-gray-400 sc-1218:w-1/2 w-full px-5">
+      <div className="border-solid border-2 border-gray-400 sc-1218:w-1/2 w-full px-7">
         <SubmissionForm />
       </div>
     </div>
