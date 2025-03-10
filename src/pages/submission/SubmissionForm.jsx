@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function SubmissionForm() {
   const [userData, setUserData] = useState({
@@ -23,6 +26,7 @@ export default function SubmissionForm() {
     author_bio: false,
   });
 
+  const [submitting, setIsSubmitting] = useState(false);
   const [inputErrorMessage, setInputErrorMessage] = useState("");
 
   function handleInputChange(e) {
@@ -40,9 +44,8 @@ export default function SubmissionForm() {
 
   async function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(userData);
 
-    setInputErrorMessage("")
+    setInputErrorMessage("");
     setInputError({
       first_name: false,
       last_name: false,
@@ -59,7 +62,7 @@ export default function SubmissionForm() {
         ...prev,
         first_name: true,
       }));
-      setInputErrorMessage("Invalid first name")
+      setInputErrorMessage("Invalid first name");
       return;
     }
 
@@ -68,7 +71,7 @@ export default function SubmissionForm() {
         ...prev,
         last_name: true,
       }));
-      setInputErrorMessage("Invalid second name")
+      setInputErrorMessage("Invalid second name");
       return;
     }
 
@@ -77,7 +80,7 @@ export default function SubmissionForm() {
         ...prev,
         email: true,
       }));
-      setInputErrorMessage("Invalid email")
+      setInputErrorMessage("Invalid email");
       return;
     }
 
@@ -86,7 +89,7 @@ export default function SubmissionForm() {
         ...prev,
         publication_title: true,
       }));
-      setInputErrorMessage("Invalid publication title")
+      setInputErrorMessage("Invalid publication title");
       return;
     }
 
@@ -95,7 +98,7 @@ export default function SubmissionForm() {
         ...prev,
         submission_type: true,
       }));
-      setInputErrorMessage("Invalid submission type")
+      setInputErrorMessage("Invalid submission type");
       return;
     }
 
@@ -107,12 +110,10 @@ export default function SubmissionForm() {
         ...prev,
         main_docx: true,
       }));
-      setInputErrorMessage("Invalid document - Only docx is suported")
+      setInputErrorMessage("Invalid document - Only docx is suported");
       return;
     }
 
-    console.log(userData.supporting_image);
-    console.log(getFileExtension(userData.supporting_image.name));
     if (
       !userData.supporting_image ||
       !["jpg", "jpeg", "png"].includes(
@@ -123,7 +124,9 @@ export default function SubmissionForm() {
         ...prev,
         supporting_image: true,
       }));
-      setInputErrorMessage("Invalid image - Only jpg, jpeg and png are supported")
+      setInputErrorMessage(
+        "Invalid image - Only jpg, jpeg and png are supported"
+      );
       return;
     }
 
@@ -132,7 +135,7 @@ export default function SubmissionForm() {
         ...prev,
         author_bio: true,
       }));
-      setInputErrorMessage("Invalid author bio")
+      setInputErrorMessage("Invalid author bio");
       return;
     }
 
@@ -146,20 +149,39 @@ export default function SubmissionForm() {
     formDataObject.append("supporting_image", userData.supporting_image);
     formDataObject.append("author_bio", userData.author_bio);
 
-    const response = await fetch(
-      "http://127.0.0.1:8000/api/publication/submit_publication",
-      {
-        method: "post",
-        body: formDataObject,
-      }
-    );
-    const result = await response.json();
+    try {
+      setIsSubmitting(true);
+      const response = await fetch(
+        apiUrl + "/api/publication/submit_publication",
+        {
+          method: "post",
+          body: formDataObject,
+        }
+      );
+      const result = await response.json();
 
-    if (response.ok) {
-      console.log("Submitted successfully");
-    } else {
-      console.log(result.error || "Submission failed.");
+      if (!response.ok) {
+        console.log(result);
+        throw new Error("Failed to submit");
+      }
+
+      toast.success("Publication submitted successfully.");
+      setUserData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        publication_title: "",
+        submission_type: "",
+        main_docx: null,
+        supporting_image: null,
+        author_bio: "",
+      });
+      document.getElementById("supporting_image").value = "";
+      document.getElementById("main_docx").value = "";
+    } catch (error) {
+      toast.error("Failed to submit publication.");
     }
+    setIsSubmitting(false);
   }
   return (
     <div className="w-full flex items-center justify-center my-[100px]">
@@ -221,10 +243,10 @@ export default function SubmissionForm() {
             Type of Submission
           </option>
           <option value="Opinion">Opinion</option>
-          <option value="Personal">Personal Story</option>
+          <option value="Personal Story">Personal Story</option>
           <option value="Case Study">Case Study</option>
-          <option value="Research and Policy Analysis">
-            Research and Policy Analysis
+          <option value="Research And Policy Analysis">
+            Research And Policy Analysis
           </option>
         </select>
 
@@ -234,7 +256,7 @@ export default function SubmissionForm() {
           } submission-input`}
         >
           <div className="text-gray-400">Upload your manuscript*</div>
-          <input type="file" name="main_docx" onChange={handleInputChange} />
+          <input type="file" name="main_docx" id="main_docx" onChange={handleInputChange} />
         </div>
 
         <div
@@ -246,6 +268,7 @@ export default function SubmissionForm() {
           <input
             type="file"
             name="supporting_image"
+            id="supporting_image"
             onChange={handleInputChange}
           />
         </div>
@@ -261,13 +284,46 @@ export default function SubmissionForm() {
           onChange={handleInputChange}
         ></textarea>
 
-        {inputErrorMessage && <p className="text-red-500 text-xl py-5">* { inputErrorMessage }</p>}
+        {inputErrorMessage && (
+          <p className="text-red-500 text-xl pb-5">* {inputErrorMessage}</p>
+        )}
 
         <button
-          className="bg-black text-white px-10 py-2 rounded-md"
+          className={`bg-black text-white px-10 py-2 rounded-md ${
+            submitting ? "opacity-50 cursor-not-allowed" : ""
+          }`}
           type="submit"
+          disabled={submitting}
         >
-          Submit
+          {submitting ? (
+            <div className="flex items-center justify-start gap-2 w-full">
+              <p>Submitting</p>
+              <div className="w-full">
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4l-3 3-3-3h4z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          ) : (
+            "Submit"
+          )}
         </button>
       </form>
     </div>
