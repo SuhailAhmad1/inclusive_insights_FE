@@ -44,7 +44,7 @@ export default function SubmissionForm() {
 
   async function handleFormSubmit(event) {
     event.preventDefault();
-
+    event.stopPropagation();
     setInputErrorMessage("");
     setInputError({
       first_name: false,
@@ -255,8 +255,18 @@ export default function SubmissionForm() {
             inputErrors.main_docx ? "input_error" : ""
           } submission-input`}
         >
-          <div className="text-gray-400">Upload your manuscript*</div>
-          <input type="file" name="main_docx" id="main_docx" onChange={handleInputChange} />
+          <label
+            htmlFor="main_docx"
+            className="text-gray-400 cursor-pointer block"
+          >
+            Upload your manuscript*
+          </label>
+          <input
+            type="file"
+            name="main_docx"
+            id="main_docx"
+            onChange={handleInputChange}
+          />
         </div>
 
         <div
@@ -264,7 +274,12 @@ export default function SubmissionForm() {
             inputErrors.supporting_image ? "input_error" : ""
           } submission-input`}
         >
-          <div className="text-gray-400">Upload a supportive Image*</div>
+          <label
+            htmlFor="supporting_image"
+            className="text-gray-400 cursor-pointer block"
+          >
+            Upload a supportive image*
+          </label>
           <input
             type="file"
             name="supporting_image"
