@@ -259,14 +259,14 @@ export default function SubmissionForm() {
             htmlFor="main_docx"
             className="text-gray-400 cursor-pointer block"
           >
-            Upload your manuscript*
+            <p>Upload your manuscript*</p>
+            <input
+              type="file"
+              name="main_docx"
+              id="main_docx"
+              onChange={handleInputChange}
+            />
           </label>
-          <input
-            type="file"
-            name="main_docx"
-            id="main_docx"
-            onChange={handleInputChange}
-          />
         </div>
 
         <div
@@ -278,14 +278,14 @@ export default function SubmissionForm() {
             htmlFor="supporting_image"
             className="text-gray-400 cursor-pointer block"
           >
-            Upload a supportive image*
+            <p>Upload a supportive image*</p>
+            <input
+              type="file"
+              name="supporting_image"
+              id="supporting_image"
+              onChange={handleInputChange}
+            />
           </label>
-          <input
-            type="file"
-            name="supporting_image"
-            id="supporting_image"
-            onChange={handleInputChange}
-          />
         </div>
         <textarea
           className={`${
