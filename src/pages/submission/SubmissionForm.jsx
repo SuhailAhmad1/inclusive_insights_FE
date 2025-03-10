@@ -30,6 +30,7 @@ export default function SubmissionForm() {
   const [inputErrorMessage, setInputErrorMessage] = useState("");
 
   function handleInputChange(e) {
+    e.preventDefault()
     const { name, value, type, files } = e.target;
     setUserData((prev) => ({
       ...prev,
