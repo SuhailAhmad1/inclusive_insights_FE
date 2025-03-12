@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
+
 import Main from "./Main";
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -8,7 +9,11 @@ export default function ViewPublication() {
   const params = useParams();
   const [publicationData, setPublicationData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setError] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   async function fetchPublicationData() {
     try {
       let endpoint =
@@ -26,6 +31,7 @@ export default function ViewPublication() {
       }
       setPublicationData(result.data);
     } catch (error) {
+      setError(true);
       toast.error("Something went wrong. Failed to load the publication.");
     } finally {
       setIsLoading(false);
@@ -60,6 +66,10 @@ export default function ViewPublication() {
             ></path>
           </svg>
         </div>
+      ) : isError ? (
+            <div>
+                <p className="px-5 text-center h-[92vh] text-gray-600 sc-650:text-3xl text-2xl flex justify-center items-center">Somthing went wrong. Please try again later.</p>
+            </div>
       ) : (
         <Main
           id={publicationData.id}
