@@ -164,6 +164,7 @@ export default function Main() {
                   {publiactionItems.map((item) => (
                     <PublicationItem
                       key={item.id}
+                      id={item.id}
                       title={item.title}
                       img={`${apiUrl}${item.img}`}
                       author={item.author}

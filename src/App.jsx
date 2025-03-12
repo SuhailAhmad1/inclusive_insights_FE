@@ -5,6 +5,7 @@ import ErrorPage from "./pages/error/ErrorPage";
 import Consult from "./pages/consult/Consult";
 import Submission from "./pages/submission/Submission";
 import Publications from "./pages/publications/Publications";
+import ViewPublication from "./pages/view_publication/ViewPublication";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/publications",
-        element: <Publications />
-      }
+        element: <Publications />,
+      },
+      {
+        path: "/publications/:publicationId",
+        element: <ViewPublication />,
+      },
     ],
   },
 ]);
