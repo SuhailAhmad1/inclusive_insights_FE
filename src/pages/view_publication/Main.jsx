@@ -20,8 +20,8 @@ export default function Main({
           />
         </div>
         <div className="px-1 pt-5">
-          <div>
-            <h2 className="text-3xl font-bold">{title}</h2>
+          <div className="pb-2">
+            <h2 className="sc-650:text-3xl text-2xl font-bold">{title}</h2>
           </div>
 
           <div className="flex text-xl items-start justify-between flex-col sc-650:flex-row sc-650:items-center">
