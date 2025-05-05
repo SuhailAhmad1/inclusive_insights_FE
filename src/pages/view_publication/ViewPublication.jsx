@@ -79,6 +79,7 @@ export default function ViewPublication() {
           created_at={publicationData.created_at}
           description={publicationData.description}
           category={publicationData.category}
+          image_description={publicationData.image_description}
         />
       )}
     </>

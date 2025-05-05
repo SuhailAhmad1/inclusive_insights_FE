@@ -170,6 +170,7 @@ export default function Main() {
                       author={item.author}
                       created_at={item.created_at}
                       description={item.description}
+                      image_description={item.image_description}
                     />
                   ))}
                 </div>

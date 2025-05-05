@@ -1,8 +1,6 @@
 export default function ExpertiseCard({ img, title, description}) {
   return (
     <div className="rounded-md border-grey border-2 px-4 bg-gray-100
-                    sc-1900:w-[430px] 
-                    sc-1650:w-[375px]
                     sc-1450:w-[320px]
                     sc-1320:w-[290px]
                     sc-1218:w-[260px]

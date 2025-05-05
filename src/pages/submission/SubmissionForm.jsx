@@ -12,6 +12,7 @@ export default function SubmissionForm() {
     submission_type: "",
     main_docx: null,
     supporting_image: null,
+    image_description: "",
     author_bio: "",
   });
 
@@ -23,6 +24,7 @@ export default function SubmissionForm() {
     submission_type: false,
     main_docx: false,
     supporting_image: false,
+    image_description: false,
     author_bio: false,
   });
 
@@ -56,6 +58,7 @@ export default function SubmissionForm() {
       submission_type: false,
       main_docx: false,
       supporting_image: false,
+      image_description: false,
       author_bio: false,
     });
 
@@ -131,6 +134,15 @@ export default function SubmissionForm() {
       );
       return;
     }
+    
+    if (userData.image_description.length === 0) {
+      setInputError((prev) => ({
+        ...prev,
+        image_description: true,
+      }));
+      setInputErrorMessage("Invalid Image description");
+      return;
+    }
 
     if (userData.author_bio.length === 0) {
       setInputError((prev) => ({
@@ -149,6 +161,7 @@ export default function SubmissionForm() {
     formDataObject.append("submission_type", userData.submission_type);
     formDataObject.append("main_docx", userData.main_docx);
     formDataObject.append("supporting_image", userData.supporting_image);
+    formDataObject.append("img_description", userData.image_description);
     formDataObject.append("author_bio", userData.author_bio);
 
     try {
@@ -176,9 +189,12 @@ export default function SubmissionForm() {
         submission_type: "",
         main_docx: null,
         supporting_image: null,
+        image_description: "",
         author_bio: "",
       });
-      document.querySelectorAll('input[type="file"]').forEach(input => input.value = "");
+      document
+        .querySelectorAll('input[type="file"]')
+        .forEach((input) => (input.value = ""));
     } catch (error) {
       toast.error("Failed to submit publication.");
     }
@@ -288,6 +304,18 @@ export default function SubmissionForm() {
             />
           </label>
         </div>
+        <textarea
+          className={`${
+            inputErrors.image_description ? "input_error" : ""
+          } submission-input w-full`}
+          name="image_description"
+          id="image_description"
+          rows="4"
+          placeholder="Image Description*"
+          value={userData.image_description}
+          onChange={handleInputChange}
+        ></textarea>
+
         <textarea
           className={`${
             inputErrors.author_bio ? "input_error" : ""

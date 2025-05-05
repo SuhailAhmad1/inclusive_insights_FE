@@ -8,7 +8,7 @@ export default function About() {
           powerful publishing, creating accessible, thriving spaces for all
         </p>
       </div>
-      <div className="sc-834:text-2xl text-xl py-5 sc-834:px-28 px-10">
+      <div className="sc-834:text-2xl text-justify text-xl py-5 sc-1070:px-24 px-10">
         <p>
           We are a pioneering organization dedicated to advancing disability
           rights, accessibility, and inclusion across industries. Our mission is

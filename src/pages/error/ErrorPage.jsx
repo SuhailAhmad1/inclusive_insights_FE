@@ -1,10 +1,8 @@
-import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 
 export default function ErrorPage() {
   return (
     <div className="h-screen">
-      <Nav />
       <div
         className="text-center bg-black text-white flex items-center justify-center flex-col h-full"
       >

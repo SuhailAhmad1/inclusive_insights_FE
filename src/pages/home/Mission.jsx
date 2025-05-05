@@ -59,17 +59,7 @@ export default function Mission() {
         Our mission is to champion disability rights and inclusion by:
       </h2>
       <div
-        className="py-20 grid-rows[40px repeat(auto-fit, minmax(auto, 1px))] grid w-full 
-        sc-1900:grid-cols-[repeat(auto-fit,530px)]
-        sc-1650:grid-cols-[repeat(auto-fit,450px)]
-        sc-1450:grid-cols-[repeat(auto-fit,380px)]
-        sc-1218:grid-cols-[repeat(auto-fit,300px)]
-        sc-1070:grid-cols-[repeat(auto-fit,380px)]
-        sc-950:grid-cols-[repeat(auto-fit,330px)]
-        sc-834:px-10
-        sc-950:px-32
-        px-10
-        justify-around gap-5"
+        className="py-16 flex justify-center px-10 gap-5 flex-wrap"
       >
         {MISSION_ITEMS.map((item) => (
           <MissionCard
