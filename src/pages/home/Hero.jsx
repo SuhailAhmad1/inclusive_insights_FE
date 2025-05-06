@@ -15,7 +15,7 @@ export default function Hero() {
       </div>
       <div className="sc-500:px-20 px-5">
         <img
-          className="rounded-lg w-full h-[300px] object-cover sc-1218:border-b-4 border-black"
+          className="rounded-tr-lg rounded-tl-lg sc-834:rounded-lg w-full h-[300px] object-cover sc-834:border-b-4 border-black"
           src={hero_img}
           alt="Image showing disabled children"
         />
