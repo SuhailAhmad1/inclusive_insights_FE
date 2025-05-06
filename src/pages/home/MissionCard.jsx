@@ -12,7 +12,7 @@ export default function MissionCard({ img, title, description }) {
       <div className="w-9 h-9 my-5 items-center flex justify-center">
         <img
           src={img}
-          alt="logo"
+          alt="mission icons"
           className="w-[28px] h-[28px] object-contain"
         />
       </div>

@@ -336,6 +336,7 @@ export default function ViewPublication() {
                 height="16"
                 viewBox="0 0 16 16"
                 fill="none"
+                title="Download Icon to download the manuscript uploaded by the user"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path

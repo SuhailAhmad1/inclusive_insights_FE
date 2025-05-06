@@ -13,7 +13,7 @@ export default function ExpertiseCard({ img, title, description}) {
       <div className="w-11 h-11 my-5 items-center flex justify-center">
         <img
           src={img}
-          alt="logo"
+          alt="expertise icons"
           className="object-contain"
         />
       </div>

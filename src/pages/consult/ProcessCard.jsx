@@ -15,17 +15,27 @@ export default function ProcessCard({ title, description, img }) {
                 h-full
                 "
     >
-      <div className="
+      <div
+        className="
                     sc-1450:w-32 sc-1450:h-32
                     sc-1218:w-28 sc-1218:h-28
                     sc-1070:w-24 sc-1070:h-24
                     sc-834:w-20 sc-834:h-20
                     w-32 h-32 mx-auto
-                    my-5 items-center flex justify-center">
-        <img src={img} alt="logo" className="object-contain" />
+                    my-5 items-center flex justify-center"
+      >
+        <img
+          src={img}
+          alt="process icons with step number on top right of the icon"
+          className="object-contain"
+        />
       </div>
-      <p className="sc-834:text-xl text-2xl font-semibold px-1 text-center">{title}</p>
-      <p className="py-3 px-1 text-center sc-834:text-base text-xl">{description}</p>
+      <p className="sc-834:text-xl text-2xl font-semibold px-1 text-center">
+        {title}
+      </p>
+      <p className="py-3 px-1 text-center sc-834:text-base text-xl">
+        {description}
+      </p>
     </div>
   );
 }

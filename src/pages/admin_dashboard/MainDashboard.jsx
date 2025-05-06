@@ -171,7 +171,7 @@ export default function MainDashboard() {
                 <img
                   className="w-[30px]"
                   src={submissions_logo}
-                  alt="Submission image that represent total number of submissions done"
+                  alt="Submission icon that represent total number of submissions done"
                 />
               </div>
               <div className="px-2">
@@ -187,7 +187,7 @@ export default function MainDashboard() {
                 <img
                   className="w-[40px]"
                   src={published_logo}
-                  alt="Upward arrows that represent number of submissions published already"
+                  alt="Upward arrows icon that represent number of submissions published already"
                 />
               </div>
               <div className="px-2">
@@ -203,7 +203,7 @@ export default function MainDashboard() {
                 <img
                   className="w-[40px]"
                   src={pending_logo}
-                  alt="watch that represent the submissions that are submitted by not yet published or rejected"
+                  alt="watch icon that represent the submissions that are submitted by not yet published or rejected"
                 />
               </div>
               <div className="px-2">
@@ -219,7 +219,7 @@ export default function MainDashboard() {
                 <img
                   className="w-[40px]"
                   src={rejected_logo}
-                  alt="Cross that represent the submissions rejected by admin"
+                  alt="Cross icon that represent the submissions rejected by admin"
                 />
               </div>
               <div className="px-2">
