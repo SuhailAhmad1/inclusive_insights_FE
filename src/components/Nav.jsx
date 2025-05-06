@@ -114,25 +114,65 @@ export default function Nav() {
                 className="font-poppins font-normal 
                 cursor-pointer mb-5"
               >
-                <NavLink to="/">Home</NavLink>
+                <NavLink
+                  to="/"
+                  className={
+                    ({ isActive }) =>
+                      isActive
+                        ? "text-blue-500 font-bold transition duration-500" // active
+                        : undefined // inactive
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
               <li
                 className="font-poppins font-normal 
                 cursor-pointer mb-5"
               >
-                <NavLink to="/publications">Our Publications</NavLink>
+                <NavLink
+                  to="/publications"
+                  className={
+                    ({ isActive }) =>
+                      isActive
+                        ? "text-blue-500 font-bold transition duration-500" // active
+                        : undefined // inactive
+                  }
+                >
+                  Our Publications
+                </NavLink>
               </li>
               <li
                 className="font-poppins font-normal 
                 cursor-pointer mb-5"
               >
-                <NavLink to="/submission">Submission</NavLink>
+                <NavLink
+                  to="/submission"
+                  className={
+                    ({ isActive }) =>
+                      isActive
+                        ? "text-blue-500 font-bold transition duration-500" // active
+                        : undefined // inactive
+                  }
+                >
+                  Submission
+                </NavLink>
               </li>
               <li
                 className="font-poppins font-normal 
                 cursor-pointer"
               >
-                <NavLink to="/consultant">Consult Us</NavLink>
+                <NavLink
+                  to="/consultant"
+                  className={
+                    ({ isActive }) =>
+                      isActive
+                        ? "text-blue-500 font-bold transition duration-500" // active
+                        : undefined // inactive
+                  }
+                >
+                  Consult Us
+                </NavLink>
               </li>
             </ul>
           </div>
