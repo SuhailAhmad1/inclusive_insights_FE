@@ -8,17 +8,19 @@ export default function Main({
   created_at,
   description,
   category,
-  image_description
+  image_description,
 }) {
   return (
     <>
-      <div className="
+      <div
+        className="
       sc-834:pt-28
       pt-24
       py-10 
       sc-834:px-8 
       px-6
-      min-h-screen">
+      min-h-screen"
+      >
         <div className="flex items-center justify-center w-full h-[400px] sc-650:h-[500px] overflow-hidden">
           <img
             className="w-full h-full object-fill sc-650:object-cover rounded-md"
@@ -50,7 +52,16 @@ export default function Main({
           </div>
 
           <div className="text-xl text-gray-800">
-            <p className="whitespace-pre-line">{description}</p>
+            {description.split("\n\n").map((paragraph, index) => (
+              <p key={index} className="mb-6">
+                {paragraph.split("\n").map((line, lineIndex) => (
+                  <>
+                    {line}
+                    {lineIndex !== paragraph.split("\n").length - 1 && <br />}
+                  </>
+                ))}
+              </p>
+            ))}
           </div>
         </div>
       </div>
