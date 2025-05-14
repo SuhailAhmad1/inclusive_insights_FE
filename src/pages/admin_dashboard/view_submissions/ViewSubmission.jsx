@@ -154,14 +154,12 @@ export default function ViewPublication() {
     try {
       const access_token = localStorage.getItem("access_token");
 
-      let endpoint =
-        apiUrl +
-        "/api/admin/publish_submission"
+      let endpoint = apiUrl + "/api/admin/publish_submission";
 
       const request_data = {
         submission_id: params.submissionId,
-        content: content
-      }
+        content: content,
+      };
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -317,9 +315,22 @@ export default function ViewPublication() {
               <p className="font-semibold text-[#606060]">
                 Content Uploaded By Admin :{" "}
               </p>
-              <p className="bg-[#F8F8F8] px-2 py-1 rounded shadow-lg whitespace-pre-line">
-                {publicationData.description}
-              </p>
+              <div className="bg-[#F8F8F8] px-2 py-1 rounded shadow-lg whitespace-pre-line">
+                {publicationData.description
+                  .split("\n\n")
+                  .map((paragraph, index) => (
+                    <p key={index} className="mb-6">
+                      {paragraph.split("\n").map((line, lineIndex) => (
+                        <>
+                          {line}
+                          {lineIndex !== paragraph.split("\n").length - 1 && (
+                            <br />
+                          )}
+                        </>
+                      ))}
+                    </p>
+                  ))}
+              </div>
             </div>
           )}
 
