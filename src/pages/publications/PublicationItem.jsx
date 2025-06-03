@@ -9,11 +9,32 @@ export default function PublicationItem({
   author,
   created_at,
   description,
-  image_description
+  image_description,
 }) {
+  function stripHtml(html) {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+
+    // Add a space after common inline and block tags to avoid word sticking
+    const tagsToPad = ["p", "div", "br", "li", "span", "strong", "em"];
+    tagsToPad.forEach((tag) => {
+      const elements = tempDiv.getElementsByTagName(tag);
+      for (const el of elements) {
+        el.insertAdjacentText("afterend", " ");
+      }
+    });
+
+    return (tempDiv.textContent || tempDiv.innerText || "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  const plainText = stripHtml(description).slice(0, 500); // Truncate to 200 chars
+
   return (
     <Link to={"/publications/" + id}>
-      <div className="
+      <div
+        className="
       sc-1450:w-[430px] 
       sc-1218:w-[360px] 
       sc-1070:w-[320px]
@@ -21,7 +42,8 @@ export default function PublicationItem({
       sc-834:w-[250px] 
       sc-650:w-[300px] 
       w-full
-      cursor-pointer hover:scale-105 transform transition-transform duration-300 hover:shadow-xl p-2">
+      cursor-pointer hover:scale-105 transform transition-transform duration-300 hover:shadow-xl p-2"
+      >
         <div className="w-full sc-950:h-[250px] h-[220px]">
           <img
             className="min-w-full h-full object-cover overflow-hidden rounded-md"
@@ -41,7 +63,7 @@ export default function PublicationItem({
         </div>
         <div className="flex items-center justify-end pb-2"></div>
         <div>
-          <p className="line-clamp-3 w-full text-gray-700">{description}</p>
+          <p className="line-clamp-3 w-full text-gray-700 whitespace-pre-line">{plainText}</p>
         </div>
       </div>
     </Link>

@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import RejectModal from "./RejectModal";
 import PublishModal from "./PublishModal";
 import { useNavigate } from "react-router-dom";
+import "react-quill/dist/quill.snow.css";
+
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -315,21 +317,9 @@ export default function ViewPublication() {
               <p className="font-semibold text-[#606060]">
                 Content Uploaded By Admin :{" "}
               </p>
-              <div className="bg-[#F8F8F8] px-2 py-1 rounded shadow-lg whitespace-pre-line">
-                {publicationData.description
-                  .split("\n\n")
-                  .map((paragraph, index) => (
-                    <p key={index} className="mb-6">
-                      {paragraph.split("\n").map((line, lineIndex) => (
-                        <>
-                          {line}
-                          {lineIndex !== paragraph.split("\n").length - 1 && (
-                            <br />
-                          )}
-                        </>
-                      ))}
-                    </p>
-                  ))}
+              <div className="bg-[#F8F8F8] max-w-full px-2 py-1 rounded shadow-lg rich-text prose max-h-[400px] overflow-y-auto"
+              dangerouslySetInnerHTML={{ __html: publicationData.description }}
+              >
               </div>
             </div>
           )}

@@ -1,4 +1,5 @@
 import author_logo from "../../assets/author_icon.png";
+import "react-quill/dist/quill.snow.css";
 
 export default function Main({
   id,
@@ -23,7 +24,7 @@ export default function Main({
       >
         <div className="flex items-center justify-center w-full h-[400px] sc-650:h-[500px] overflow-hidden">
           <img
-            className="w-full h-full object-fill sc-650:object-cover rounded-md"
+            className="w-full h-full object-contain sc-650:object-cover rounded-md"
             src={img}
             alt={image_description}
           />
@@ -44,24 +45,15 @@ export default function Main({
             </p>
           </div>
 
-          <div className="text-xl pb-5">
+          <div className="text-xl pb-10">
             <p>
               <span className="font-semibold">Category : </span>
               {category}
             </p>
           </div>
 
-          <div className="text-xl text-gray-800">
-            {description.split("\n\n").map((paragraph, index) => (
-              <p key={index} className="mb-6">
-                {paragraph.split("\n").map((line, lineIndex) => (
-                  <>
-                    {line}
-                    {lineIndex !== paragraph.split("\n").length - 1 && <br />}
-                  </>
-                ))}
-              </p>
-            ))}
+          <div className="max-w-full text-justify text-xl rich-text text-gray-800 prose"
+          dangerouslySetInnerHTML={{ __html: description }}>
           </div>
         </div>
       </div>

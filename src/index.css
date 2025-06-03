@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "react-quill/dist/quill.snow.css";
 
 @tailwind base;
 @tailwind components;
@@ -54,4 +55,73 @@
 
 .input_error {
   border: 1px solid red;
+}
+
+.rich-text h2{
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  font-size: 1.3em;
+}
+
+@media (max-width: 768px) {
+  .rich-text h2 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .rich-text h2 {
+    font-size: 1.1em;
+  }
+}
+
+.rich-text h3{
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+  font-size: 1.15em;
+}
+
+@media (max-width: 768px) {
+  .rich-text h3{
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .rich-text h3{
+    font-size: 1em;
+  }
+}
+
+.rich-text p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rich-text a{
+  color: blue;
+  text-decoration: underline;
+}
+
+.ql-align-center {
+  text-align: center;
+}
+.ql-align-right {
+  text-align: right;
+}
+.ql-align-justify {
+  text-align: justify;
+}
+.ql-align-left {
+  text-align: left;
+}
+.ql-indent-1 {
+  padding-left: 3em;
+}
+.ql-indent-2 {
+  padding-left: 6em;
+}
+.ql-direction-rtl {
+  direction: rtl;
+  text-align: right;
 }
