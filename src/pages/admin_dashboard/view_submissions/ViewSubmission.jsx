@@ -6,7 +6,6 @@ import PublishModal from "./PublishModal";
 import { useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 
-
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function ViewPublication() {
@@ -92,49 +91,12 @@ export default function ViewPublication() {
   async function downloadManuscript() {
     try {
       toast.success("Download Started");
-      const access_token = localStorage.getItem("access_token");
-
-      let endpoint =
-        apiUrl +
-        "/api/admin/download_manuscript?submission_id=" +
-        params.submissionId;
-
-      const response = await fetch(endpoint, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-
-      // const result = await response.json();
-      if (!response.ok) {
-        if (response.status === 401) {
-          navigate("/login");
-        }
-        console.log(result);
-        throw new Error("Failed to Download");
-      }
-
-      const disposition = response.headers.get("Content-Disposition");
-      let filename = publicationData.title + ".docx"; // fallback
-
-      if (disposition && disposition.includes("filename=")) {
-        const match = disposition.match(/filename="?([^"]+)"?/);
-        if (match?.[1]) {
-          filename = match[1];
-        }
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-
       const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", filename); // Or dynamically get from headers
+      link.href = publicationData.docx_path; // signed S3 URL
+      link.download = ""; // lets browser decide filename
       document.body.appendChild(link);
       link.click();
-      link.remove();
-      window.URL.revokeObjectURL(url);
+      document.body.removeChild(link);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong. Failed to download Manuscript.");
@@ -299,7 +261,7 @@ export default function ViewPublication() {
           <div className="flex items-center justify-center w-full h-[300px] sc-650:h-[500px] overflow-hidden">
             <img
               className="w-full h-full object-fill sc-650:object-cover rounded-md"
-              src={`${apiUrl}${publicationData.img}`}
+              src={`${publicationData.img}`}
               alt={`${publicationData.title}_image`}
             />
           </div>
@@ -317,10 +279,12 @@ export default function ViewPublication() {
               <p className="font-semibold text-[#606060]">
                 Content Uploaded By Admin :{" "}
               </p>
-              <div className="bg-[#F8F8F8] max-w-full px-2 py-1 rounded shadow-lg rich-text prose max-h-[400px] overflow-y-auto"
-              dangerouslySetInnerHTML={{ __html: publicationData.description }}
-              >
-              </div>
+              <div
+                className="bg-[#F8F8F8] max-w-full px-2 py-1 rounded shadow-lg rich-text prose max-h-[400px] overflow-y-auto"
+                dangerouslySetInnerHTML={{
+                  __html: publicationData.description,
+                }}
+              ></div>
             </div>
           )}
 

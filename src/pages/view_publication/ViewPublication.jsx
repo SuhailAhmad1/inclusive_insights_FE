@@ -74,7 +74,7 @@ export default function ViewPublication() {
         <Main
           id={publicationData.id}
           title={publicationData.title}
-          img={`${apiUrl}${publicationData.img}`}
+          img={`${publicationData.img}`}
           author={publicationData.author}
           created_at={publicationData.created_at}
           description={publicationData.description}

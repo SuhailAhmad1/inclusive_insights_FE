@@ -166,7 +166,7 @@ export default function Main() {
                       key={item.id}
                       id={item.id}
                       title={item.title}
-                      img={`${apiUrl}${item.img}`}
+                      img={`${item.img}`}
                       author={item.author}
                       created_at={item.created_at}
                       description={item.description}
